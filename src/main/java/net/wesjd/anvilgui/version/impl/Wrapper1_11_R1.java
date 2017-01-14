@@ -1,18 +1,18 @@
 package net.wesjd.anvilgui.version.impl;
 
+import net.minecraft.server.v1_11_R1.*;
 import net.wesjd.anvilgui.version.VersionWrapper;
-import net.minecraft.server.v1_8_R1.*;
-import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
-import org.bukkit.craftbukkit.v1_8_R1.event.CraftEventFactory;
+import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_11_R1.event.CraftEventFactory;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
 /**
- * {@link VersionWrapper} implemented for NMS version 1_8_R1
+ * {@link VersionWrapper} implemented for NMS version 1_11_R1
  * @author Wesley Smith
- * @since 1.0
+ * @since 1.1.1
  */
-public class Wrapper1_8_R1 implements VersionWrapper {
+public class Wrapper1_11_R1 implements VersionWrapper {
 
     /**
      * {@inheritDoc}
@@ -91,7 +91,7 @@ public class Wrapper1_8_R1 implements VersionWrapper {
      */
     @Override
     public Object newContainerAnvil(Player player) {
-        return new AnvilContainer(toNMS(player));
+        return new Wrapper1_11_R1.AnvilContainer(toNMS(player));
     }
 
     /**
@@ -113,10 +113,11 @@ public class Wrapper1_8_R1 implements VersionWrapper {
         }
 
         @Override
-        public boolean a(EntityHuman human) {
+        public boolean a(EntityHuman entityhuman) {
             return true;
         }
 
     }
 
 }
+

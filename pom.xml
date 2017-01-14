@@ -10,12 +10,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>19.0</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-1.8</artifactId>
             <version>1.8-R0.1-SNAPSHOT</version>
@@ -47,13 +41,20 @@
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-1.10</artifactId>
-            <version>1.10-R0.1-SNAPSHOT</version>
+            <artifactId>spigot-1.10.2</artifactId>
+            <version>1.10.2-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-1.11</artifactId>
+            <version>1.11-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
 
     <build>
+        <defaultGoal>clean install javadoc:javadoc</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -62,6 +63,17 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.4</version>
+                <configuration>
+                    <outputDirectory>${project.basedir}/javadocs</outputDirectory>
+                    <reportOutputDirectory>${project.basedir}/javadocs</reportOutputDirectory>
+                    <destDir>javadocs</destDir>
+                    <failOnError>false</failOnError> <!-- if any fix is possible around @deprecated, please let me know -->
                 </configuration>
             </plugin>
         </plugins>
@@ -77,7 +89,7 @@
     <distributionManagement>
         <repository>
             <id>wesjd-repo</id>
-            <url>http://wesjd.net:8081/repository/thirdparty/</url>
+            <url>https://nexus.wesjd.net/repository/thirdparty/</url>
         </repository>
     </distributionManagement>
 
